@@ -8,6 +8,7 @@ import com.luckyowl.test.beans.PropertyValues;
  * 包括：
  * 1. class类型、构造参数、属性值
  * 2. 是否为单例
+ * 3. bean的scope
  * 等。
  * </p>
  *

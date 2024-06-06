@@ -10,24 +10,34 @@ public class HelloService {
 
     private String message;
 
-    public String sayHello(){
+    private Long code;
+
+    public String sayHello() {
         System.out.println("hello");
         return "hello";
     }
 
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
 
-    public String getName(){
+    public String getName() {
         return this.name;
     }
 
-    public void setMessage(String message){
+    public void setMessage(String message) {
         this.message = message;
     }
 
-    public String getMessage(){
+    public String getMessage() {
         return this.message;
+    }
+
+    public void setCode(Long code) {
+        this.code = code;
+    }
+
+    public Long getCode() {
+        return this.code;
     }
 }

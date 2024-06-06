@@ -1,5 +1,6 @@
 package com.luckyowl.test.beans.factory.support;
 
+import cn.hutool.core.bean.BeanUtil;
 import com.luckyowl.test.beans.BeansException;
 import com.luckyowl.test.beans.PropertyValue;
 import com.luckyowl.test.beans.factory.config.BeanDefinition;
@@ -61,12 +62,13 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
      */
     protected void applyPropertyValues(String beanName, Object bean, BeanDefinition beanDefinition){
         try {
-            Class beanClass = beanDefinition.getBeanClass();
+            //Class beanClass = beanDefinition.getBeanClass();
 
             for (PropertyValue propertyValue : beanDefinition.getPropertyValues().getPropertyValues()) {
                 String name = propertyValue.getName();
-                String value = propertyValue.getValue();
+                Object value = propertyValue.getValue();
 
+                /*
                 //通过属性field的set方法来设置属性值
                 //1. 获取bean的class
                 Class<?> type = beanClass.getDeclaredField(name).getType();
@@ -76,6 +78,10 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
                 Method method = beanClass.getDeclaredMethod(methodName, type);
                 //4. 调用set方法来给bean中的属性赋值value-即调用bean对象的method方法，传入value参数
                 method.invoke(bean, value);
+                */
+
+                //通过引入hutool工具类，使用反射设置属性
+                BeanUtil.setFieldValue(bean, name, value);
             }
         } catch (Exception ex){
             throw new BeansException("为bean实例:["+ beanName +"]填充属性失败", ex);
