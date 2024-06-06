@@ -4,6 +4,7 @@ import cn.hutool.core.bean.BeanUtil;
 import com.luckyowl.test.beans.BeansException;
 import com.luckyowl.test.beans.PropertyValue;
 import com.luckyowl.test.beans.factory.config.BeanDefinition;
+import com.luckyowl.test.beans.factory.config.BeanReference;
 
 import java.lang.reflect.Method;
 
@@ -79,6 +80,13 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
                 //4. 调用set方法来给bean中的属性赋值value-即调用bean对象的method方法，传入value参数
                 method.invoke(bean, value);
                 */
+
+                //如果属性值是BeanReference类型，则先构建该bean实例
+                if(value instanceof BeanReference){
+                    //A依赖B，先实例化B
+                    BeanReference beanReference = (BeanReference) value;
+                    value = getBean(beanReference.getBeanName());
+                }
 
                 //通过引入hutool工具类，使用反射设置属性
                 BeanUtil.setFieldValue(bean, name, value);

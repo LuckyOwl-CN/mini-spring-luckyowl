@@ -1,5 +1,6 @@
 package com.luckyowl.test.beans.factory;
 
+import com.luckyowl.test.beans.bean.HelloService;
 import com.luckyowl.test.beans.PropertyValue;
 import com.luckyowl.test.beans.PropertyValues;
 import com.luckyowl.test.beans.factory.config.BeanDefinition;
