@@ -6,7 +6,7 @@ import com.luckyowl.test.beans.factory.config.BeanDefinition;
 /**
  * @description 实例化策略
  *
- * @author yuanjiahao03
+ * @author LuckyOwl-CN
  * @date 2024/6/6
  **/
 public interface InstantiationStrategy {

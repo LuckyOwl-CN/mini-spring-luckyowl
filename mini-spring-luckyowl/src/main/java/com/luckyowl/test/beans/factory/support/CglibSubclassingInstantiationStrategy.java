@@ -6,7 +6,7 @@ import com.luckyowl.test.beans.factory.config.BeanDefinition;
 /**
  * @description 使用CGLIB动态生成子类实现实例化策略
  *
- * @author yuanjiahao03
+ * @author LuckyOwl-CN
  * @date 2024/6/6
  **/
 public class CglibSubclassingInstantiationStrategy implements InstantiationStrategy {

@@ -3,7 +3,7 @@ package com.luckyowl.test.beans;
 /**
  * @description 定义bean异常
  *
- * @author yuanjiahao03
+ * @author LuckyOwl-CN
  * @date 2024/6/6
  **/
 public class BeansException extends RuntimeException {

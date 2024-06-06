@@ -6,7 +6,7 @@ package com.luckyowl.test.beans;
  *     保存bean属性名[name]和属性值[value]
  * </p>
  *
- * @author yuanjiahao03
+ * @author LuckyOwl-CN
  * @date 2024/6/6
  **/
 public class PropertyValue {

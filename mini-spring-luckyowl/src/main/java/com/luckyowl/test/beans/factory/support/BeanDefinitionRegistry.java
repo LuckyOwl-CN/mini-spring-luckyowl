@@ -5,7 +5,7 @@ import com.luckyowl.test.beans.factory.config.BeanDefinition;
 /**
  * @description  BeanDefinition注册表接口：用于注册BeanDefinition——定义注册beanDefinition的方法
  *
- * @author yuanjiahao03
+ * @author LuckyOwl-CN
  * @date 2024/6/6
  **/
 public interface BeanDefinitionRegistry {

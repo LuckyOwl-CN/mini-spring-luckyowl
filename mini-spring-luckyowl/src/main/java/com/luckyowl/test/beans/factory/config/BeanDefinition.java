@@ -12,7 +12,7 @@ import com.luckyowl.test.beans.PropertyValues;
  * 等。
  * </p>
  *
- * @author yuanjiahao03
+ * @author LuckyOwl-CN
  * @date 2024/6/6
  **/
 public class BeanDefinition {

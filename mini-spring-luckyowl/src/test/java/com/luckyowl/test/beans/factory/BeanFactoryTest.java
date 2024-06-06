@@ -9,7 +9,7 @@ import org.junit.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * @author yuanjiahao03
+ * @author LuckyOwl-CN
  * @date 2024/6/5
  **/
 public class BeanFactoryTest {

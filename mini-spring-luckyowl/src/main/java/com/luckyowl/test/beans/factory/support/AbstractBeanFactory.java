@@ -13,7 +13,7 @@ import com.luckyowl.test.beans.factory.config.BeanDefinition;
  *     2.根据beanName获取bean定义
  * </p>
  *
- * @author yuanjiahao03
+ * @author LuckyOwl-CN
  * @date 2024/6/6
  **/
 public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry implements BeanFactory {

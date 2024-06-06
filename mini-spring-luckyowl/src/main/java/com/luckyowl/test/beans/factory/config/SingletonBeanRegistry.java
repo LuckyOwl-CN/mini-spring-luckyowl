@@ -3,7 +3,7 @@ package com.luckyowl.test.beans.factory.config;
 /**
  * @description  单例bean注册表
  *
- * @author yuanjiahao03
+ * @author LuckyOwl-CN
  * @date 2024/6/6
  **/
 public interface SingletonBeanRegistry {

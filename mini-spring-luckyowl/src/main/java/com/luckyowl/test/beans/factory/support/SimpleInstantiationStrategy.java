@@ -11,7 +11,7 @@ import java.lang.reflect.Constructor;
  *     通过bean的无参构造函数实例化对象
  * </p>
  *
- * @author yuanjiahao03
+ * @author LuckyOwl-CN
  * @date 2024/6/6
  **/
 public class SimpleInstantiationStrategy implements InstantiationStrategy {

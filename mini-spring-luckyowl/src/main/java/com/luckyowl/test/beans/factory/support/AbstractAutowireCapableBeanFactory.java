@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
  *     <b>至此该继承分支完成了根据bean定义创建bean实例的功能，后续需要完成获取bean定义</b>
  * </p>
  *
- * @author yuanjiahao03
+ * @author LuckyOwl-CN
  * @date 2024/6/6
  **/
 public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFactory {

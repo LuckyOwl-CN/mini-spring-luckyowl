@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * @description 默认单例bean注册表——实现单例bean注册表接口
  *
- * @author yuanjiahao03
+ * @author LuckyOwl-CN
  * @date 2024/6/6
  **/
 public class DefaultSingletonBeanRegistry implements SingletonBeanRegistry {
