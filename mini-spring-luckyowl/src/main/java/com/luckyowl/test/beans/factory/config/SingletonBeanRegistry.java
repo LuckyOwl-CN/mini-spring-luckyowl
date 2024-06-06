@@ -1,0 +1,18 @@
+package com.luckyowl.test.beans.factory.config;
+
+/**
+ * @description  单例bean注册表
+ *
+ * @author yuanjiahao03
+ * @date 2024/6/6
+ **/
+public interface SingletonBeanRegistry {
+
+    /**
+     * 获取单例bean
+     * @param beanName
+     * @return
+     */
+    Object getSingleton(String beanName);
+
+}
