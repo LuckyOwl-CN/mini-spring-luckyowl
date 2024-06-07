@@ -1,8 +1,10 @@
 package com.luckyowl.test.beans.factory.support;
 
 import com.luckyowl.test.beans.BeansException;
+import com.luckyowl.test.beans.factory.ConfigurableListableBeanFactory;
 import com.luckyowl.test.beans.factory.config.BeanDefinition;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,7 +12,7 @@ import java.util.Map;
  * @author LuckyOwl-CN
  * @date 2024/6/6
  **/
-public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFactory implements BeanDefinitionRegistry {
+public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFactory implements BeanDefinitionRegistry, ConfigurableListableBeanFactory {
 
     private Map<String, BeanDefinition> beanDefinitionMap = new HashMap<>();
 
@@ -26,11 +28,39 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
     }
 
     @Override
-    protected BeanDefinition getBeanDefinition(String beanName) throws BeansException {
+    public BeanDefinition getBeanDefinition(String beanName) throws BeansException {
         BeanDefinition beanDefinition = beanDefinitionMap.get(beanName);
         if(beanDefinition == null){
             throw new BeansException("beanDefinitionMap中获取不到，beanName为[" + beanName + "]的bean定义");
         }
         return beanDefinition;
+    }
+
+    @Override
+    public boolean containsBeanDefinition(String beanName) {
+        return beanDefinitionMap.containsKey(beanName);
+    }
+
+    @Override
+    public <T> Map<String, T> getBeansOfType(Class<T> type) throws BeansException {
+        Map<String, T> result = new HashMap<>();
+        beanDefinitionMap.forEach((beanName, beanDefinition) -> {
+            Class beanClass = beanDefinition.getBeanClass();
+            //判断beanClass是否可以赋值给type，即beanClass是否是type的子类或实现了type的接口
+            if(type.isAssignableFrom(beanClass)){
+                T bean = (T) getBean(beanName);
+                result.put(beanName, bean);
+            }
+        });
+        return result;
+    }
+
+    /**
+     * 预实例化所有单实例bean
+     * @throws BeansException
+     */
+    @Override
+    public void preInstantiateSingletons() throws BeansException {
+        beanDefinitionMap.keySet().forEach(this::getBean);
     }
 }
