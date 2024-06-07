@@ -3,6 +3,7 @@ package com.luckyowl.test.beans.factory.support;
 import com.luckyowl.test.beans.BeansException;
 import com.luckyowl.test.beans.factory.BeanFactory;
 import com.luckyowl.test.beans.factory.config.BeanDefinition;
+import com.luckyowl.test.beans.factory.config.ConfigurableBeanFactory;
 
 /**
  * @description 抽象BeanFactory
@@ -16,7 +17,7 @@ import com.luckyowl.test.beans.factory.config.BeanDefinition;
  * @author LuckyOwl-CN
  * @date 2024/6/6
  **/
-public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry implements BeanFactory {
+public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry implements ConfigurableBeanFactory {
 
     /**
      * 通过bean名称获取bean实例
@@ -51,4 +52,9 @@ public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry i
      * @throws BeansException
      */
     protected abstract BeanDefinition getBeanDefinition(String beanName) throws BeansException;
+
+    @Override
+    public <T> T getBean(String name, Class<T> requiredType) throws BeansException {
+        return (T) getBean(name);
+    }
 }

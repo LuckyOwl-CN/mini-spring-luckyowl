@@ -3,6 +3,7 @@ package com.luckyowl.test.beans.factory.support;
 import cn.hutool.core.bean.BeanUtil;
 import com.luckyowl.test.beans.BeansException;
 import com.luckyowl.test.beans.PropertyValue;
+import com.luckyowl.test.beans.factory.config.AutowireCapableBeanFactory;
 import com.luckyowl.test.beans.factory.config.BeanDefinition;
 import com.luckyowl.test.beans.factory.config.BeanReference;
 
@@ -18,7 +19,7 @@ import java.lang.reflect.Method;
  * @author LuckyOwl-CN
  * @date 2024/6/6
  **/
-public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFactory {
+public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFactory implements AutowireCapableBeanFactory {
 
     private InstantiationStrategy instantiationStrategy = new SimpleInstantiationStrategy();
 
