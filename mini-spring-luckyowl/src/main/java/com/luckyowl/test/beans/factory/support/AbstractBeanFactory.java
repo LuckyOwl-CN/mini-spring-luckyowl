@@ -3,7 +3,11 @@ package com.luckyowl.test.beans.factory.support;
 import com.luckyowl.test.beans.BeansException;
 import com.luckyowl.test.beans.factory.BeanFactory;
 import com.luckyowl.test.beans.factory.config.BeanDefinition;
+import com.luckyowl.test.beans.factory.config.BeanPostProcessor;
 import com.luckyowl.test.beans.factory.config.ConfigurableBeanFactory;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @description 抽象BeanFactory
@@ -18,6 +22,8 @@ import com.luckyowl.test.beans.factory.config.ConfigurableBeanFactory;
  * @date 2024/6/6
  **/
 public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry implements ConfigurableBeanFactory {
+
+    private final List<BeanPostProcessor> beanPostProcessors = new ArrayList<>();
 
     /**
      * 通过bean名称获取bean实例
@@ -56,5 +62,16 @@ public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry i
     @Override
     public <T> T getBean(String name, Class<T> requiredType) throws BeansException {
         return (T) getBean(name);
+    }
+
+    @Override
+    public void addBeanPostProcessor(BeanPostProcessor beanPostProcessor) {
+        //存在则覆盖
+        beanPostProcessors.remove(beanPostProcessor);
+        beanPostProcessors.add(beanPostProcessor);
+    }
+
+    public List<BeanPostProcessor> getBeanPostProcessors() {
+        return beanPostProcessors;
     }
 }

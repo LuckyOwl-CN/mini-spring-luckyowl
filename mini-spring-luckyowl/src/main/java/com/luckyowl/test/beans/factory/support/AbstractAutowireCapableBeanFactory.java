@@ -5,6 +5,7 @@ import com.luckyowl.test.beans.BeansException;
 import com.luckyowl.test.beans.PropertyValue;
 import com.luckyowl.test.beans.factory.config.AutowireCapableBeanFactory;
 import com.luckyowl.test.beans.factory.config.BeanDefinition;
+import com.luckyowl.test.beans.factory.config.BeanPostProcessor;
 import com.luckyowl.test.beans.factory.config.BeanReference;
 
 import java.lang.reflect.Method;
@@ -37,6 +38,8 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
             bean = createBeanInstance(beanDefinition);
             //2. 为创建的bean实例填充属性
             applyPropertyValues(beanName, bean, beanDefinition);
+            //3. 执行bean的初始化方法和BeanPostProcessor的前置和后置处理方法
+            initializeBean(beanName, bean, beanDefinition);
         } catch (Exception e){
             throw new BeansException("实例化bean失败", e);
         }
@@ -95,5 +98,47 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
         } catch (Exception ex){
             throw new BeansException("为bean实例:["+ beanName +"]填充属性失败", ex);
         }
+    }
+
+    protected Object initializeBean(String beanName, Object bean, BeanDefinition beanDefinition){
+        //1. 执行BeanPostProcessor的前置处理
+        Object wrappedBean = applyBeanPostProcessorsBeforeInitialization(bean, beanName);
+
+        //TODO 2. 执行Bean的初始化方法
+
+        //3. 执行BeanPostProcessor的后置处理
+        wrappedBean = applyBeanPostProcessorsAfterInitialization(wrappedBean, beanName);
+        return wrappedBean;
+    }
+
+    @Override
+    public Object applyBeanPostProcessorsBeforeInitialization(Object existingBean, String beanName) throws BeansException {
+        Object result = existingBean;
+        for(BeanPostProcessor processor: getBeanPostProcessors()){
+            Object current = processor.postProcessBeforeInitialization(result, beanName);
+            if(current == null){
+                return result;
+            }
+            result = current;
+        }
+        return result;
+    }
+
+    @Override
+    public Object applyBeanPostProcessorsAfterInitialization(Object existingBean, String beanName) throws BeansException {
+        Object result = existingBean;
+        for(BeanPostProcessor processor: getBeanPostProcessors()){
+            Object current = processor.postProcessAfterInitialization(result, beanName);
+            if(current == null){
+                return result;
+            }
+            result = current;
+        }
+        return result;
+    }
+
+    protected void invokeInitMethod(String beanName, Object bean, BeanDefinition beanDefinition){
+        //TODO
+        System.out.println("执行bean["+ beanName + "]的初始化方法");
     }
 }
