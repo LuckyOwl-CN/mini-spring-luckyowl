@@ -1,8 +1,12 @@
 package com.luckyowl.test.beans.factory.support;
 
 import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.util.ClassUtil;
+import cn.hutool.core.util.StrUtil;
 import com.luckyowl.test.beans.BeansException;
 import com.luckyowl.test.beans.PropertyValue;
+import com.luckyowl.test.beans.factory.DisposableBean;
+import com.luckyowl.test.beans.factory.InitializingBean;
 import com.luckyowl.test.beans.factory.config.AutowireCapableBeanFactory;
 import com.luckyowl.test.beans.factory.config.BeanDefinition;
 import com.luckyowl.test.beans.factory.config.BeanPostProcessor;
@@ -43,8 +47,24 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
         } catch (Exception e){
             throw new BeansException("实例化bean失败", e);
         }
+        //注册有销毁方法的bean
+        registerDisposableBeanIfNecessary(beanName, bean, beanDefinition);
+
         addSingleton(beanName, bean);
         return bean;
+    }
+
+    /**
+     * 注册有销毁方法的bean，即bean继承自
+     *
+     * @param beanName
+     * @param bean
+     * @param beanDefinition
+     */
+    protected void registerDisposableBeanIfNecessary(String beanName, Object bean, BeanDefinition beanDefinition){
+        if(bean instanceof DisposableBean || StrUtil.isNotEmpty(beanDefinition.getDestroyMethodName())){
+            registerDisposableBean(beanName, new DisposableBeanAdapter(bean, beanName, beanDefinition));
+        }
     }
 
     protected Object createBeanInstance(BeanDefinition beanDefinition){
@@ -104,7 +124,11 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
         //1. 执行BeanPostProcessor的前置处理
         Object wrappedBean = applyBeanPostProcessorsBeforeInitialization(bean, beanName);
 
-        //TODO 2. 执行Bean的初始化方法
+        try{
+            invokeInitMethod(beanName, wrappedBean, beanDefinition);
+        } catch (Throwable ex){
+            throw new BeansException("调用bean["+ beanName +"]的初始化方法失败", ex);
+        }
 
         //3. 执行BeanPostProcessor的后置处理
         wrappedBean = applyBeanPostProcessorsAfterInitialization(wrappedBean, beanName);
@@ -137,8 +161,20 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
         return result;
     }
 
-    protected void invokeInitMethod(String beanName, Object bean, BeanDefinition beanDefinition){
-        //TODO
-        System.out.println("执行bean["+ beanName + "]的初始化方法");
+    protected void invokeInitMethod(String beanName, Object bean, BeanDefinition beanDefinition) throws Throwable {
+        //1.若bean继承自InitializingBean则调用初始化方法
+        if(bean instanceof InitializingBean){
+            ((InitializingBean) bean).afterPropertiesSet();
+        }
+        //2.获取初始化方法
+        String initMethodName = beanDefinition.getInitMethodName();
+        if(StrUtil.isNotEmpty(initMethodName)){
+            Method initMethod = ClassUtil.getPublicMethod(beanDefinition.getBeanClass(), initMethodName);
+            if(initMethod == null) {
+                throw new BeansException("找不到bean[" + beanName + "]的初始化方法[" + initMethodName + "]");
+            }
+            //3.初始化
+            initMethod.invoke(bean);
+        }
     }
 }

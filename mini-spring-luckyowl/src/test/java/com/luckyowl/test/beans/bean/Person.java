@@ -1,10 +1,13 @@
 package com.luckyowl.test.beans.bean;
 
+import com.luckyowl.test.beans.factory.DisposableBean;
+import com.luckyowl.test.beans.factory.InitializingBean;
+
 /**
  * @author LuckyOwl-CN
  * @date 2024/6/6
  **/
-public class Person {
+public class Person implements InitializingBean, DisposableBean {
 
     private String name;
 
@@ -45,4 +48,21 @@ public class Person {
                 '}';
     }
 
+    public void customInitMethod(){
+        System.out.println("customInitMethod");
+    }
+
+    public void customDestroyMethod(){
+        System.out.println("customDestroyMethod");
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        System.out.println("afterPropertiesSet");
+    }
+
+    @Override
+    public void destroy() throws Exception {
+        System.out.println("destroy");
+    }
 }
