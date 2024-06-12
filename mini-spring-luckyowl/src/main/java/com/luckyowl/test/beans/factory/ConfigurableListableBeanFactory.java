@@ -3,6 +3,7 @@ package com.luckyowl.test.beans.factory;
 import com.luckyowl.test.beans.BeansException;
 import com.luckyowl.test.beans.factory.config.AutowireCapableBeanFactory;
 import com.luckyowl.test.beans.factory.config.BeanDefinition;
+import com.luckyowl.test.beans.factory.config.BeanPostProcessor;
 import com.luckyowl.test.beans.factory.config.ConfigurableBeanFactory;
 
 /**
@@ -19,4 +20,11 @@ public interface ConfigurableListableBeanFactory extends ListableBeanFactory, Au
      */
     BeanDefinition getBeanDefinition(String beanName) throws BeansException;
 
+    /**
+     * 提前实例化所有单例bean
+     * @throws BeansException
+     */
+    void preInstantiateSingletons() throws BeansException;
+
+    void addBeanPostProcessor(BeanPostProcessor beanPostProcessor);
 }

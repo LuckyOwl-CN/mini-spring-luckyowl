@@ -16,4 +16,8 @@
         <property name="brand" value="su7"/>
     </bean>
 
+    <bean class ="com.luckyowl.test.ioc.common.CustomerBeanPostProcessor"/>
+
+    <bean class ="com.luckyowl.test.ioc.common.CustomBeanFactoryPostProcessor"/>
+
 </beans>
