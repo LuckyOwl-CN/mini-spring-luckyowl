@@ -20,4 +20,6 @@
 
     <bean class ="com.luckyowl.test.ioc.common.CustomBeanFactoryPostProcessor"/>
 
+    <bean id = "helloService" class = "com.luckyowl.test.beans.bean.HelloService"/>
+
 </beans>

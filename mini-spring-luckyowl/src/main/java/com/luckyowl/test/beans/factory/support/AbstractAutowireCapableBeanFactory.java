@@ -5,6 +5,7 @@ import cn.hutool.core.util.ClassUtil;
 import cn.hutool.core.util.StrUtil;
 import com.luckyowl.test.beans.BeansException;
 import com.luckyowl.test.beans.PropertyValue;
+import com.luckyowl.test.beans.factory.BeanFactoryAware;
 import com.luckyowl.test.beans.factory.DisposableBean;
 import com.luckyowl.test.beans.factory.InitializingBean;
 import com.luckyowl.test.beans.factory.config.AutowireCapableBeanFactory;
@@ -121,6 +122,11 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
     }
 
     protected Object initializeBean(String beanName, Object bean, BeanDefinition beanDefinition){
+        //设置beanFactory
+        if(bean instanceof BeanFactoryAware){
+            ((BeanFactoryAware) bean).setBeanFactory(this);
+        }
+
         //1. 执行BeanPostProcessor的前置处理
         Object wrappedBean = applyBeanPostProcessorsBeforeInitialization(bean, beanName);
 
