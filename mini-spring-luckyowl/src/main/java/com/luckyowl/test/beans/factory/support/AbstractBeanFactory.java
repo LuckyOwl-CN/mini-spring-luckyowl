@@ -27,6 +27,10 @@ public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry i
 
     /**
      * 通过bean名称获取bean实例
+     * <p>
+     *     1.先尝试从单实例bean缓存中获取
+     *     2.缓存中获取不到则新建
+     * </p>
      * @param name
      * @return
      * @throws BeansException
