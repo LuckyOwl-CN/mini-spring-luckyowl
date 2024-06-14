@@ -96,7 +96,7 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
                 throw new BeansException("加载类[" + className + "]失败", e);
             }
             //id 优先于 name
-            beanName = StrUtil.isEmpty(beanId) ? beanId : beanName;
+            beanName = StrUtil.isNotEmpty(beanId) ? beanId : beanName;
             if(StrUtil.isEmpty(beanName)){
                 //若id和name都为空，则使用类名第一个字母小写作为bean名称
                 beanName = StrUtil.lowerFirst(clazz.getSimpleName());
