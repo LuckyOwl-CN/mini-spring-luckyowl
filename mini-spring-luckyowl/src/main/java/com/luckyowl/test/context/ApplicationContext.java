@@ -13,5 +13,5 @@ import com.luckyowl.test.core.io.ResourceLoader;
  * @author LuckyOwl-CN
  * @date 2024/6/11
  **/
-public interface ApplicationContext extends ListableBeanFactory, HierarchicalBeanFactory, ResourceLoader {
+public interface ApplicationContext extends ListableBeanFactory, HierarchicalBeanFactory, ResourceLoader, ApplicationEventPubisher {
 }
