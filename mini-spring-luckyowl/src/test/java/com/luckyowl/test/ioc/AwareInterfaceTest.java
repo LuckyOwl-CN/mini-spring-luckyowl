@@ -1,6 +1,6 @@
 package com.luckyowl.test.ioc;
 
-import com.luckyowl.test.beans.bean.HelloService;
+import com.luckyowl.test.service.HelloService;
 import com.luckyowl.test.context.support.ClassPathXmlApplicationContext;
 import org.junit.Test;
 

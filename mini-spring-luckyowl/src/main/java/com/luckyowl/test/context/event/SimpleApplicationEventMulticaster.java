@@ -9,7 +9,7 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
 /**
- * @author yuanjiahao03
+ * @author LuckyOwl-CN
  * @date 2024/6/14
  **/
 public class SimpleApplicationEventMulticaster extends AbstractApplicationEventMulticaster{

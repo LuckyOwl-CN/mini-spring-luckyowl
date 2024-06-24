@@ -1,4 +1,4 @@
-package com.luckyowl.test.beans.bean;
+package com.luckyowl.test.service;
 
 import com.luckyowl.test.beans.BeansException;
 import com.luckyowl.test.beans.factory.BeanFactory;

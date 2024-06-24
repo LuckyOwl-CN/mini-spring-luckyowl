@@ -1,11 +1,11 @@
 package com.luckyowl.test.ioc;
 
-import com.luckyowl.test.beans.bean.Car;
-import com.luckyowl.test.beans.bean.Person;
+import com.luckyowl.test.bean.Car;
+import com.luckyowl.test.bean.Person;
 import com.luckyowl.test.beans.factory.support.DefaultListableBeanFactory;
 import com.luckyowl.test.beans.factory.xml.XmlBeanDefinitionReader;
-import com.luckyowl.test.ioc.common.CustomBeanFactoryPostProcessor;
-import com.luckyowl.test.ioc.common.CustomerBeanPostProcessor;
+import com.luckyowl.test.common.CustomBeanFactoryPostProcessor;
+import com.luckyowl.test.common.CustomerBeanPostProcessor;
 import org.junit.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;

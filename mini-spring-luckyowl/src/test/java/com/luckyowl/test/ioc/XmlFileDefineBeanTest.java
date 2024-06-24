@@ -1,7 +1,7 @@
 package com.luckyowl.test.ioc;
 
-import com.luckyowl.test.beans.bean.Car;
-import com.luckyowl.test.beans.bean.Person;
+import com.luckyowl.test.bean.Car;
+import com.luckyowl.test.bean.Person;
 import com.luckyowl.test.beans.factory.support.DefaultListableBeanFactory;
 import com.luckyowl.test.beans.factory.xml.XmlBeanDefinitionReader;
 import org.junit.Test;

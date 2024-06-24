@@ -1,11 +1,11 @@
 package com.luckyowl.test.ioc;
 
 import com.luckyowl.test.context.support.ClassPathXmlApplicationContext;
-import com.luckyowl.test.ioc.common.event.CustomEvent;
+import com.luckyowl.test.common.event.CustomEvent;
 import org.junit.Test;
 
 /**
- * @author yuanjiahao03
+ * @author LuckyOwl-CN
  * @date 2024/6/14
  **/
 public class EventAndEventListenerTest {

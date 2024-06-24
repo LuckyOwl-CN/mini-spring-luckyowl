@@ -6,7 +6,7 @@ import com.luckyowl.test.context.ApplicationListener;
 /**
  * @description 注册监听器和发布事件的接口
  *
- * @author yuanjiahao03
+ * @author LuckyOwl-CN
  * @date 2024/6/14
  **/
 public interface ApplicationEventMulticaster {

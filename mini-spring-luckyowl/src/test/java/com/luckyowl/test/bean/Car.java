@@ -1,4 +1,4 @@
-package com.luckyowl.test.beans.bean;
+package com.luckyowl.test.bean;
 
 /**
  * @author LuckyOwl-CN

@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * @author yuanjiahao03
+ * @author LuckyOwl-CN
  * @date 2024/6/14
  **/
 public abstract class AbstractApplicationEventMulticaster implements ApplicationEventMulticaster , BeanFactoryAware {

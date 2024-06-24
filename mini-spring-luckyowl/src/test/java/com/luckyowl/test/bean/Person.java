@@ -1,4 +1,4 @@
-package com.luckyowl.test.beans.bean;
+package com.luckyowl.test.bean;
 
 import com.luckyowl.test.beans.factory.DisposableBean;
 import com.luckyowl.test.beans.factory.InitializingBean;

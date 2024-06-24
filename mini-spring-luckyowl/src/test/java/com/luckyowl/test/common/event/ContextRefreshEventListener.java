@@ -1,4 +1,4 @@
-package com.luckyowl.test.ioc.common.event;
+package com.luckyowl.test.common.event;
 
 import com.luckyowl.test.context.ApplicationListener;
 import com.luckyowl.test.context.event.ContextRefreshedEvent;

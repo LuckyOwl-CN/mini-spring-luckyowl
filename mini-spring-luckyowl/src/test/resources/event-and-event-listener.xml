@@ -7,9 +7,9 @@
 		 http://www.springframework.org/schema/context
 		 http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 
-    <bean class="com.luckyowl.test.ioc.common.event.CustomEventListener"/>
+    <bean class="com.luckyowl.test.common.event.CustomEventListener"/>
 
-    <bean class="com.luckyowl.test.ioc.common.event.ContextRefreshEventListener"/>
+    <bean class="com.luckyowl.test.common.event.ContextRefreshEventListener"/>
 
-    <bean class="com.luckyowl.test.ioc.common.event.ContextClosedEventListener"/>
+    <bean class="com.luckyowl.test.common.event.ContextClosedEventListener"/>
 </beans>

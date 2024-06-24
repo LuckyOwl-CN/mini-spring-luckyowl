@@ -1,10 +1,10 @@
-package com.luckyowl.test;
+package com.luckyowl.test.ioc;
 
-import com.luckyowl.test.beans.bean.Car;
-import com.luckyowl.test.beans.bean.HelloService;
+import com.luckyowl.test.bean.Car;
+import com.luckyowl.test.service.HelloService;
 import com.luckyowl.test.beans.PropertyValue;
 import com.luckyowl.test.beans.PropertyValues;
-import com.luckyowl.test.beans.bean.Person;
+import com.luckyowl.test.bean.Person;
 import com.luckyowl.test.beans.factory.config.BeanDefinition;
 import com.luckyowl.test.beans.factory.config.BeanReference;
 import com.luckyowl.test.beans.factory.support.DefaultListableBeanFactory;

@@ -1,7 +1,7 @@
-package com.luckyowl.test.ioc.common;
+package com.luckyowl.test.common;
 
 import com.luckyowl.test.beans.BeansException;
-import com.luckyowl.test.beans.bean.Car;
+import com.luckyowl.test.bean.Car;
 import com.luckyowl.test.beans.factory.config.BeanPostProcessor;
 
 /**

@@ -4,7 +4,7 @@ import com.luckyowl.test.context.ApplicationContext;
 import com.luckyowl.test.context.ApplicationEvent;
 
 /**
- * @author yuanjiahao03
+ * @author LuckyOwl-CN
  * @date 2024/6/14
  **/
 public abstract class ApplicationContextEvent extends ApplicationEvent {

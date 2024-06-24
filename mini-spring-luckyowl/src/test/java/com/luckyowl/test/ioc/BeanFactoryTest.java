@@ -1,6 +1,6 @@
-package com.luckyowl.test.beans.factory;
+package com.luckyowl.test.ioc;
 
-import com.luckyowl.test.beans.bean.HelloService;
+import com.luckyowl.test.service.HelloService;
 import com.luckyowl.test.beans.PropertyValue;
 import com.luckyowl.test.beans.PropertyValues;
 import com.luckyowl.test.beans.factory.config.BeanDefinition;
